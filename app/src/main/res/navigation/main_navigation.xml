@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/personalDataFragment">
+
+    <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="com.raihan.a09navigation02.PersonalDataFragment"
+        android:label="fragment_personal_data"
+        tools:layout="@layout/fragment_personal_data" >
+        <action
+            android:id="@+id/action_personalDataFragment_to_parentDataFragment"
+            app:destination="@id/parentDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/parentDataFragment"
+        android:name="com.raihan.a09navigation02.ParentDataFragment"
+        android:label="fragment_parent_data"
+        tools:layout="@layout/fragment_parent_data" >
+        <argument
+            android:name="personal"
+            app:argType="com.raihan.a09navigation02.models.PersonalData" />
+        <action
+            android:id="@+id/action_parentDataFragment_to_schoolDataFragment"
+            app:destination="@id/schoolDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/schoolDataFragment"
+        android:name="com.raihan.a09navigation02.SchoolDataFragment"
+        android:label="fragment_school_data"
+        tools:layout="@layout/fragment_school_data" >
+        <argument
+            android:name="personal"
+            app:argType="com.raihan.a09navigation02.models.PersonalData" />
+        <argument
+            android:name="parent"
+            app:argType="com.raihan.a09navigation02.models.ParentData" />
+        <action
+            android:id="@+id/action_schoolDataFragment_to_resultFormFragment"
+            app:destination="@id/resultFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFormFragment"
+        android:name="com.raihan.a09navigation02.ResultFormFragment"
+        android:label="fragment_result_form"
+        tools:layout="@layout/fragment_result_form">
+        <argument
+            android:name="parent"
+            app:argType="com.raihan.a09navigation02.models.ParentData" />
+        <argument
+            android:name="personal"
+            app:argType="com.raihan.a09navigation02.models.PersonalData" />
+        <argument
+            android:name="school"
+            app:argType="com.raihan.a09navigation02.models.SchoolData" />
+    </fragment>
+</navigation>
